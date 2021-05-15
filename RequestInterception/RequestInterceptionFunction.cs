@@ -14,19 +14,20 @@ namespace RequestInterception
     public class RequestInterceptionFunction : IFunctionInvocationFilter, IFunctionExceptionFilter
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        
-        public RequestInterceptionFunction(IHttpContextAccessor httpContextAccessor)
+        private readonly ILogger<RequestInterceptionFunction> _log;
+
+        public RequestInterceptionFunction(IHttpContextAccessor httpContextAccessor, ILogger<RequestInterceptionFunction> log)
         {
             _httpContextAccessor = httpContextAccessor;
+            _log = log;
         }
         
         [FunctionName(nameof(RequestInterceptionFunction))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] Person personReq,
-            ILogger log,
             HttpRequest request)
         {
-            log.LogInformation("C# HTTP trigger function processed a request");
+            _log.LogTrace("C# HTTP trigger function processed a request");
 
             var name = personReq.Name;
             var age = personReq.Age;
@@ -36,6 +37,8 @@ namespace RequestInterception
 
         public Task OnExecutingAsync(FunctionExecutingContext executingContext, CancellationToken cancellationToken)
         {
+            _log.LogTrace("In OnExecutingAsync");
+                
             // do interception "on the way in"
             //
             if (executingContext.Arguments.TryGetValue("request", out var request))
@@ -81,6 +84,8 @@ namespace RequestInterception
 
         public Task OnExecutedAsync(FunctionExecutedContext executedContext, CancellationToken cancellationToken)
         {
+            _log.LogTrace("In OnExecutedAsync");
+
             // do interception "on the way out"
             //
             return Task.CompletedTask;
@@ -88,6 +93,8 @@ namespace RequestInterception
 
         public async Task OnExceptionAsync(FunctionExceptionContext exceptionContext, CancellationToken cancellationToken)
         {
+            _log.LogTrace("In OnExceptionAsync");
+
             if (exceptionContext.Exception.InnerException is PropertyValidationFailedException)
             {
                 _httpContextAccessor.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
