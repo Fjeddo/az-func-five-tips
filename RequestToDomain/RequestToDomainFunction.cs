@@ -11,7 +11,7 @@ namespace RequestToDomain
     {
         [FunctionName(nameof(RequestToDomainFunction))]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] UpdateUserWorkRequest updateUserWorkRequest,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] UpdateUserWorkRequest updateUserWorkRequest,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
