@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBinding", "ModelBinding\ModelBinding.csproj", "{8A5A0690-320C-4AB9-99CC-00751BE09F65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelBinding", "ModelBinding\ModelBinding.csproj", "{8A5A0690-320C-4AB9-99CC-00751BE09F65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestInterception", "RequestInterception\RequestInterception.csproj", "{DBEF29D4-135C-4EC2-AA16-F43453980063}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestInterception", "RequestInterception\RequestInterception.csproj", "{DBEF29D4-135C-4EC2-AA16-F43453980063}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestToDomain", "RequestToDomain\RequestToDomain.csproj", "{54D6A34A-2406-4A11-B86A-0FE9F5B74471}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,18 @@ Global
 		{DBEF29D4-135C-4EC2-AA16-F43453980063}.Release|x64.Build.0 = Release|Any CPU
 		{DBEF29D4-135C-4EC2-AA16-F43453980063}.Release|x86.ActiveCfg = Release|Any CPU
 		{DBEF29D4-135C-4EC2-AA16-F43453980063}.Release|x86.Build.0 = Release|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Debug|x64.Build.0 = Debug|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Debug|x86.Build.0 = Debug|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Release|x64.ActiveCfg = Release|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Release|x64.Build.0 = Release|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Release|x86.ActiveCfg = Release|Any CPU
+		{54D6A34A-2406-4A11-B86A-0FE9F5B74471}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
