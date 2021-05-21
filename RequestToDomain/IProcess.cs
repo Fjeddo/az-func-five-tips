@@ -1,7 +1,7 @@
 namespace RequestToDomain
 {
-    public interface IProcess
+    public interface IProcess<T>
     {
-        void Run();
+        (bool success, T model, int status) Run();
     }
 }
