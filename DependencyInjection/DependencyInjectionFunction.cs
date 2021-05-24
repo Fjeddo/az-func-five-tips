@@ -1,34 +1,40 @@
-using System.IO;
 using System.Threading.Tasks;
+using DependencyInjection.Domain.Processes;
+using DependencyInjection.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace DependencyInjection
 {
-    public static class DependencyInjectionFunction
+    public class DependencyInjectionFunction
     {
-        [FunctionName(nameof(DependencyInjectionFunction))]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IPersonService _personService;
+        private readonly SomePersonProcess _somePersonProcess;
+        private readonly SomeUtilityClass _someUtilityClass;
+
+        public DependencyInjectionFunction(IHttpContextAccessor httpContextAccessor, IPersonService personService, SomePersonProcess somePersonProcess, SomeUtilityClass someUtilityClass)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
-            string name = req.Query["name"];
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);
+            _httpContextAccessor = httpContextAccessor;
+            _personService = personService;
+            _somePersonProcess = somePersonProcess;
+            _someUtilityClass = someUtilityClass;
+        }
+        
+        [FunctionName(nameof(DependencyInjectionFunction))]
+        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
+        {
+            return new OkObjectResult(new 
+            {
+                HttpContextAccessor_is_not_null = _httpContextAccessor != null,
+                PersonService_is_not_null = _personService != null,
+                SomePersonProcess_is_not_null = _somePersonProcess != null,
+                SomeUtilityClass_is_not_null = _someUtilityClass != null,
+                Log_is_not_null = log != null
+            });
         }
     }
 }
