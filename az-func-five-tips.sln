@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelBinding", "ModelBindin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestInterception", "RequestInterception\RequestInterception.csproj", "{DBEF29D4-135C-4EC2-AA16-F43453980063}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestToDomain", "RequestToDomain\RequestToDomain.csproj", "{54D6A34A-2406-4A11-B86A-0FE9F5B74471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestToDomain", "RequestToDomain\RequestToDomain.csproj", "{54D6A34A-2406-4A11-B86A-0FE9F5B74471}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{F9583DB6-583E-45FD-A5C2-5DB6247AF31A}"
 EndProject
