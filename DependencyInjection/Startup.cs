@@ -39,6 +39,10 @@ namespace DependencyInjection
                 // this is invoked when creating an instance
                 return new PersonService();
             });
+
+            /////////
+            // Extension method
+            builder.Services.AddDomainServices();
         }
     }
 }
