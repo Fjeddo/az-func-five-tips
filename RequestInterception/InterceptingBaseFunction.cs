@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace RequestInterception
 {
-    public class InterceptingBaseFunction
+    public abstract class InterceptingBaseFunction
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<InterceptingBaseFunction> _log;
